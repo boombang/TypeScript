@@ -126,6 +126,8 @@ function getScriptTransformers(compilerOptions: CompilerOptions, customTransform
 
     addRange(transformers, customTransformers && map(customTransformers.before, wrapScriptTransformerFactory));
 
+    return transformers;
+
     transformers.push(transformTypeScript);
 
     if (compilerOptions.experimentalDecorators) {
@@ -182,6 +184,7 @@ function getScriptTransformers(compilerOptions: CompilerOptions, customTransform
         transformers.push(transformES5);
     }
 
+    // @ts-ignore
     addRange(transformers, customTransformers && map(customTransformers.after, wrapScriptTransformerFactory));
     return transformers;
 }
